@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Magic Chess Predictor Lite</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Main Content -->
+      <div class="content-container">
+        <div class="grid-container">
+          <div class="panel players-list">
+            <div class="panel-header">
+              <h2>Pemain</h2>
+              <div class="panel-actions">
+                <button
+                  id="scan-names-btn"
+                  class="scan-btn"
+                  title="Scan dokumen untuk OCR nama pemain otomatis"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M20.4 14.5L16 10 4 20" />
+                  </svg>
+                </button>
+                <button id="reset-names-btn" class="reset-btn">
+                  Reset Nama
+                </button>
+              </div>
+            </div>
+            <div class="players-container" id="players-container">
+            </div>
+
+            <div id="ocr-modal" class="modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3>Scan Dokumen Nama Pemain (OCR)</h3>
+                  <button id="close-modal" class="close-button">✕</button>
+                </div>
+                <div id="drop-zone" class="drop-zone">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="upload-icon"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M20.4 14.5L16 10 4 20" />
+                  </svg>
+                  <p class="drop-text">
+                    Klik atau seret gambar ke sini untuk scan nama pemain
+                    otomatis
+                  </p>
+                  <p class="drop-hint">
+                    atau tekan <kbd>Ctrl</kbd>+<kbd>V</kbd> untuk paste
+                    screenshot
+                  </p>
+                  <input
+                    type="file"
+                    id="file-input"
+                    accept="image/*"
+                    class="hidden"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Match Inputs -->
+          <div class="panel match-inputs">
+            <div class="panel-header">
+              <h2>Input Lawan</h2>
+              <button id="reset-matches-btn" class="reset-btn">
+                Reset Input
+              </button>
+            </div>
+            <div class="match-inputs-container" id="match-inputs-container">
+            </div>
+          </div>
+
+          <!-- Predictions Table -->
+          <div class="panel predictions-table">
+            <div class="panel-header">
+              <h2>Prediksi</h2>
+            </div>
+            <div class="table-container">
+              <table id="predictions-table">
+                <thead>
+                  <tr>
+                    <th>Ronde</th>
+                    <th class="emerald-text">Lawan Kamu</th>
+                    <th id="th-opponent-of">Lawan dari</th>
+                  </tr>
+                </thead>
+                <tbody id="predictions-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="gameUtils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
